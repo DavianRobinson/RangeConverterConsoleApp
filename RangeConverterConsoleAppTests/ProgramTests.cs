@@ -12,19 +12,43 @@ namespace RangeConverterConsoleApp.Tests
     public class ProgramTests
     {
         [TestMethod()]
-        public void ConvertRangesToSequenceTest()
+        public void ConvertASingleItemRangeToSequenceTest()
         {
 
-            // Example: sequence(“1”)=[1]
-            // Example: sequence(“1,2”)=[1,2]
-            // Example: sequence(“1:3,5”)=[1,2,3,5]
-
-
-            Assert.Fail();
+            // Example: sequence(“1”)=[1]          
+            var testString = "1";
+            IEnumerable<int> expected = new List<int> { 1 } as IEnumerable<int>;
+            var actual = RangeConverterConsoleApp.Program.ConvertRangesToSequence(testString);
+            Assert.AreEqual(actual.First(), expected.First());
         }
 
         [TestMethod()]
-        public void ConvertSequenceToRangesTest()
+        public void ConvertATwoItemRangeToSequenceTest()
+        {
+            // Example: sequence(“1,2”)=[1,2]
+            var testString = "1,2";
+            IEnumerable<int> expected = new List<int> { 1, 2 } as IEnumerable<int>;
+            var actual = RangeConverterConsoleApp.Program.ConvertRangesToSequence(testString);
+
+            Assert.AreEqual(actual.Count(), expected.Count());
+        }
+
+        [TestMethod()]
+        public void ConvertMultipleItemsRangesToSequenceTest()
+        {
+
+
+            // Example: sequence(“1:3,5”)=[1,2,3,5]
+            var testString = "1:3,5";
+            IEnumerable<int> expected = new List<int> { 1, 2, 3, 5 } as IEnumerable<int>;
+
+            var actual = RangeConverterConsoleApp.Program.ConvertRangesToSequence(testString);
+
+            Assert.AreEqual(actual.Count(), expected.Count());
+        }
+
+        [TestMethod()]
+        public void ConvertSinlgleItemSequenceToRangesTest()
         {
 
             // Example: ranges(1) = “1”

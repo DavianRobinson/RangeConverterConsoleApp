@@ -10,32 +10,34 @@ namespace RangeConverterConsoleApp
     {
         static void Main(string[] args)
         {
-          
+
             IEnumerable<int> testnumbers = new int[] { 1 };
-            IEnumerable<int> testnumbers2 = new int[] { 1,2 };
+            IEnumerable<int> testnumbers2 = new int[] { 1, 2 };
             IEnumerable<int> testnumbers3 = new int[] { 1, 2, 3, 5 };
 
 
             var result = ConvertSequenceToRanges(testnumbers);
-            var result2 = ConvertSequenceToRanges(testnumbers2);            
+            var result2 = ConvertSequenceToRanges(testnumbers2);
             var result3 = ConvertSequenceToRanges(testnumbers3);
 
 
-            Console.WriteLine(result);            
+            Console.WriteLine(result);
             Console.WriteLine(result2);
             Console.WriteLine(result3);
-            Console.WriteLine(String.Join(",", ConvertRangesToSequence(result3)));           
+
+            //reverse operation for testnumers3
+            Console.WriteLine(String.Join(",", ConvertRangesToSequence(result3)));
 
             Console.ReadLine();
 
 
         }
 
-     
+
 
         public static IEnumerable<int> ConvertRangesToSequence(string ranges)
         {
-            var numbers =ranges.Split(',').ToList<string>();
+            var numbers = ranges.Split(',').ToList<string>();
             var output = new List<int>();
             foreach (var item in numbers)
             {
@@ -89,7 +91,10 @@ namespace RangeConverterConsoleApp
                 }
 
                 if (count > 1)
+                {
+                    output.Append(":");
                     output.Append(current);
+                }
             }
 
             return output.ToString();
