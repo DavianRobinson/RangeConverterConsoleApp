@@ -21,11 +21,17 @@ namespace RangeConverterConsoleApp
             var result3 = ConvertSequenceToRanges(testnumbers3);
 
 
+            Console.WriteLine("Convert Sequence to Ranges with input-ranges(1) :");
             Console.WriteLine(result);
+
+            Console.WriteLine("Convert Sequence to Ranges with input-ranges([1,2]) :");
             Console.WriteLine(result2);
+
+            Console.WriteLine("Convert Sequence to Ranges with input-ranges([1,2,3,5]) :");
             Console.WriteLine(result3);
 
-            //reverse operation for testnumers3
+            //reverse operation for testnumbers3
+            Console.WriteLine("Convert  Range to Sequence with input-sequence(1:3, 5) :");
             Console.WriteLine(String.Join(",", ConvertRangesToSequence(result3)));
 
             Console.ReadLine();
